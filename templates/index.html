@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Tools Directory</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+  </head>
+  <body>
+    <header class="site-header" role="banner">
+      <h1>AI Tools Directory</h1>
+      <p class="tagline">Curated list for students and researchers</p>
+      <div class="byline" aria-label="Creator credit">Created by <strong>HAMZA</strong></div>
+    </header>
+
+    <main id="content" class="container" role="main">
+      {% if tools and tools|length > 0 %}
+        <nav class="toc" aria-label="Tool index">
+          <h2>Tools</h2>
+          <ul>
+            {% for tool in tools %}
+            <li><a href="#tool-{{ loop.index }}">{{ tool.name }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+
+        <section class="tool-grid" aria-live="polite">
+          {% for tool in tools %}
+          <article id="tool-{{ loop.index }}" class="tool-card" aria-labelledby="tool-title-{{ loop.index }}">
+            <h3 id="tool-title-{{ loop.index }}" class="tool-title">{{ tool.name }}</h3>
+            <p class="tool-desc">{{ tool.description }}</p>
+            <p class="tool-usage"><strong>Recommended usage:</strong> {{ tool.usage }}</p>
+            {% if tool.link %}
+            <p class="tool-link"><a href="{{ tool.link }}" target="_blank" rel="noopener noreferrer">Visit website</a></p>
+            {% endif %}
+          </article>
+          {% endfor %}
+        </section>
+      {% else %}
+        <p>No tools found. Please ensure <code>table.csv</code> is present with columns <code>Tool Name</code> and <code>Link</code>.</p>
+      {% endif %}
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+      <p>© {{ 2025 }} AI Tools Directory</p>
+    </footer>
+  </body>
+  </html>
+
+
