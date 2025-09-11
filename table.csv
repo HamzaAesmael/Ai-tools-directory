@@ -1,20 +1,20 @@
-Tool Name,Link
-AI chat,https://aistudio.google.com/prompts/new_chat
-Gemini chat,https://gemini.google.com/
-chat gpt,https://chatgpt.com/
-deepseek,https://chat.deepseek.com/
-AI translater,https://www.deepl.com/
-generate code,https://copilot.microsoft.com/chats/bxUaWVg7Yq7wcJCmT2pGK
-AI Image Editor - Nano Banana,https://nanobanana.ai/generator
-email reply,https://app.rytr.me/create/file/68b49aabeb3a31dc3b255fb4?mode=write&generate=&key=reply-email-generator
-generate photo,https://www.freepik.com/pikaso/ai-image-generator#from_element=home_shortcuts&from_view=generateImage
-Microsoft Copilot chat,https://copilot.microsoft.com/
-test code,https://codetester.io/runner/
-optimizer prompt for chat,https://promptperfect.jina.ai/interactive
-gift idea AI,https://www.coolgiftideas.io/?l=p&ref=FutureTools.io
-generative AI data,https://app.mostly.ai/d/home
-data preparation ai,https://www.chatcsv.co/dashboard/chat/126951
-"AI documents maker ( presentation , tables , doc )",https://www.aidocmaker.com/
-Best code project maker,https://cursor.com/
-Data vis,https://columns.ai/
-Data vis +,https://www.chartpixel.com/
+Tool Name,Link,Description of the Site,Year Creation of the Site,Country Who Created,Context Window,Benchmarks
+AI chat - Google,https://aistudio.google.com/prompts/new_chat,"Part of Google AI Studio, it provides a platform for creating and testing prompts for various AI models.",2023,USA,Varies by model,Not specified
+Gemini chat - Google,https://gemini.google.com/,"A conversational AI chatbot developed by Google AI, capable of understanding and generating human-like text.",2023 (as Bard),USA,Up to 1 million tokens for Gemini 1.5 Pro.,"State-of-the-art performance on a wide range of benchmarks, ranking #1 on the LMArena leaderboard."
+Chat gpt,https://chatgpt.com/,"A generative artificial intelligence chatbot developed by OpenAI that can answer questions, hold conversations, and generate various forms of text.",2022,USA,4096 tokens (GPT-4) / 128 000 tokens (GPT-4o),"Surpassed 100 million users within two months of its launch, becoming the fastest-growing consumer software application in history."
+DeepSeek,https://chat.deepseek.com/,"An AI chatbot from the Chinese company DeepSeek that can answer questions, solve logic problems, and write computer programs.",2023,China,128 000 tokens for DeepSeek-V2 and R1 models,Became the most downloaded freeware app on the iOS App Store in the United States by January 2025.
+AI translater,https://www.deepl.com/,"A neural machine translation service known for its accurate and nuanced translations, supporting over 30 languages.",2017,Germany,Not applicable,"Often considered more accurate than Google Translate, especially for European languages."
+Generate code - Microsoft,https://copilot.microsoft.com/chats/bxUaWVg7Yq7wcJCmT2pGK,"An AI-powered assistant integrated into Microsoft 365 that aids in generating and rewriting text, creating presentations, and analyzing data.",2023,USA,Varies by application,Aims to enhance productivity across Microsoft's suite of applications.
+AI Image Editor – Nano Banana,https://nanobanana.ai/generator,An AI image editing model from Google that specializes in editing existing images using simple text prompts.,2025 (Announced),USA,Not applicable,Considered a top-rated image editing model.
+Rytr (Email Reply Generator),https://app.rytr.me/create/file/68b49aabeb3a31dc3b255fb4?mode=write&generate=&key=reply-email-generator,"An AI writing assistant that helps generate content for various use cases, including emails, blogs, and social media.",2021,Singapore,"Not publicly specified (Uses a finite token limit per generation, typical of API-based models)","Rytr is benchmarked as providing high-quality content for short-to-medium-form content like emails, blog sections, product descriptions, and social media posts."
+Generate photo ( Pikaso ) ,https://www.freepik.com/pikaso/ai-image-generator#from_element=home_shortcuts&from_view=generateImage,An AI-powered tool by Freepik for generating images from text descriptions.,2023,Spain (Freepik),"Not a text-based context window. Utilizes ""real-time sketch-to-image"" generation.",Real-time AI image generation from sketches and text prompts.
+Microsoft Copilot chat,https://copilot.microsoft.com/,"A generative AI chatbot by Microsoft that can cite sources, create various forms of content, and is integrated into Bing and Microsoft Edge.",2023,USA,Varies,Functions as the main replacement for the discontinued Cortana.
+Code tester,https://codetester.io/runner/,An online tool for testing and running code snippets in various programming languages.,2022-2023,Not specified,"Not a generative AI context window. Focuses on code execution in isolated environments (""sandboxes"").","Online code execution and testing platform. Provides a secure, isolated environment to run and test code snippets in multiple programming languages without local setup."
+PromptPerfect (by Jina AI),https://promptperfect.jina.ai/interactive,An AI-powered tool for optimizing prompts for large language models to generate more accurate and desired outputs.,2023,Germany (Jina AI),"Optimizes prompts for specific model constraints (e.g., 4K for GPT-3, 128K for Claude).",Developed by Jina AI. Automatically refines and improves text prompts for various large language models (LLMs) and diffusion models to yield higher quality outputs.
+Cool Gift Ideas IO,https://www.coolgiftideas.io/?l=p&ref=FutureTools.io,An AI-driven platform that suggests personalized gift ideas based on the recipient's interests and hobbies.,2023-2024,Not specified,"Standard LLM context window for processing the input query (e.g., relationship, occasion, interests).","Featured on Product Hunt. Narrow focus on a single, common problem (finding gifts). Simplicity and speed for the user."
+Mostly AI,https://app.mostly.ai/d/home,"A platform that generates synthetic data that mimics real data for use in AI development, analytics, and testing without compromising privacy.",2017,Austria,Not a standard text context window. Uses generative models that understand the complex statistical relationships within a dataset.,Pioneer in AI-generated synthetic data.
+ChatCSV,https://www.chatcsv.co/dashboard/chat/126951,An AI tool that allows users to interact with and analyze their CSV data through a chat interface.,2023,Not specified,"Limited by the underlying LLM (e.g., GPT-4), but also by the tool's ability to process and reason over the entire uploaded CSV file.",AI-powered conversational data analysis for CSV files.
+AIDocMaker,https://www.aidocmaker.com/,"An all-in-one AI platform for creating documents, presentations, and voiceovers.",2023-2024,Not specified,"AI-powered document generation and automation for presentations, reports, and spreadsheets.",Streamlines content creation by integrating multiple tools into one workflow.
+Cursor,https://cursor.com/,An AI-powered code editor designed to improve developer productivity by integrating AI features directly into the coding environment.,2023,USA (Anysphere),"128K tokens (as of late 2023, using OpenAI's GPT-4-turbo model)",Built as a fork of Visual Studio Code.
+Columns AI	,https://columns.ai/,An AI-powered data visualization and storytelling platform that helps users create and share interactive data presentations.,2023,USA,	Standard LLM context window for processing natural language queries and dataset metadata.,AI-powered data visualization and analytics platform.
+ChartPixel	,https://www.chartpixel.com/,An AI-assisted data analysis tool that generates charts and insights from data to simplify the process of data understanding.,2023 (Published in directory),United Kingdom,Standard LLM context window for processing dataset structure and generating annotations.,AI-powered tool that instantly analyzes uploaded data to generate multiple annotated visualizations and statistical summaries.
