@@ -14,30 +14,41 @@
     </header>
 
     <main id="content" class="container" role="main">
-      {% if tools and tools|length > 0 %}
-        <nav class="toc" aria-label="Tool index">
-          <h2>Tools</h2>
+      {% if categories and categories|length > 0 %}
+        <nav class="toc" aria-label="Tool index by category">
+          <h2>Categories</h2>
           <ul>
-            {% for tool in tools %}
-            <li><a href="#tool-{{ loop.index }}">{{ tool.name }}</a></li>
+            {% for cat, items in categories %}
+            <li><a href="#cat-{{ loop.index }}">{{ cat }} ({{ items|length }})</a></li>
             {% endfor %}
           </ul>
         </nav>
 
-        <section class="tool-grid" aria-live="polite">
-          {% for tool in tools %}
-          <article id="tool-{{ loop.index }}" class="tool-card" aria-labelledby="tool-title-{{ loop.index }}">
-            <h3 id="tool-title-{{ loop.index }}" class="tool-title">{{ tool.name }}</h3>
-            <p class="tool-desc">{{ tool.description }}</p>
-            <p class="tool-usage"><strong>Recommended usage:</strong> {{ tool.usage }}</p>
-            {% if tool.link %}
-            <p class="tool-link"><a href="{{ tool.link }}" target="_blank" rel="noopener noreferrer">Visit website</a></p>
-            {% endif %}
-          </article>
-          {% endfor %}
+        {% for cat, items in categories %}
+        <section id="cat-{{ loop.index }}" class="category-section" aria-labelledby="cat-title-{{ loop.index }}">
+          <h2 id="cat-title-{{ loop.index }}" class="category-title">{{ cat }}</h2>
+          <div class="tool-grid" aria-live="polite">
+            {% for tool in items %}
+            <article class="tool-card" aria-labelledby="tool-title-{{ cat|replace(' ','-') }}-{{ loop.index }}">
+              <h3 id="tool-title-{{ cat|replace(' ','-') }}-{{ loop.index }}" class="tool-title">{{ tool.name }}</h3>
+              <p class="tool-desc">{{ tool.description }}</p>
+              <ul class="meta">
+                {% if tool.year %}<li><strong>Year:</strong> {{ tool.year }}</li>{% endif %}
+                {% if tool.country %}<li><strong>Country:</strong> {{ tool.country }}</li>{% endif %}
+                {% if tool.context_window %}<li><strong>Context window:</strong> {{ tool.context_window }}</li>{% endif %}
+                {% if tool.benchmarks %}<li><strong>Benchmarks:</strong> {{ tool.benchmarks }}</li>{% endif %}
+              </ul>
+              <p class="tool-usage"><strong>Recommended usage:</strong> {{ tool.usage }}</p>
+              {% if tool.link %}
+              <p class="tool-link"><a href="{{ tool.link }}" target="_blank" rel="noopener noreferrer">Visit website</a></p>
+              {% endif %}
+            </article>
+            {% endfor %}
+          </div>
         </section>
+        {% endfor %}
       {% else %}
-        <p>No tools found. Please ensure <code>table.csv</code> is present with columns <code>Tool Name</code> and <code>Link</code>.</p>
+        <p>No tools found. Please ensure <code>table.csv</code> includes at least <code>Tool Name</code> and <code>Link</code>. Optional columns: <code>Description of the Site</code>, <code>Year Creation of the Site</code>, <code>Country Who Created</code>, <code>Context Window</code>, <code>Benchmarks</code>, <code>Category</code>.</p>
       {% endif %}
     </main>
 

@@ -1,7 +1,7 @@
 import csv
 import os
 from dataclasses import dataclass
-from typing import List
+from typing import Dict, List, Tuple
 
 from flask import Flask, render_template, url_for
 
@@ -19,6 +19,11 @@ class Tool:
     link: str
     description: str
     usage: str
+    year: str = ""
+    country: str = ""
+    context_window: str = ""
+    benchmarks: str = ""
+    category: str = "Uncategorized"
 
 
 def generate_description(tool_name: str) -> str:
@@ -65,6 +70,17 @@ def generate_usage(tool_name: str) -> str:
     return "Incorporate into your workflow to automate routine academic tasks."
 
 
+def infer_category(tool_name: str) -> str:
+    name = tool_name.lower()
+    if any(k in name for k in ["image", "photo", "nano banana", "pikaso", "freepik"]):
+        return "Images Generation"
+    if any(k in name for k in ["code", "copilot", "tester", "cursor"]):
+        return "Code Generating"
+    if any(k in name for k in ["vis", "chart", "columns", "chartpixel", "visualization"]):
+        return "Visualization Tools"
+    return "Other Tools"
+
+
 def load_tools(csv_path: str) -> List[Tool]:
     tools: List[Tool] = []
     if not os.path.exists(csv_path):
@@ -82,9 +98,36 @@ def load_tools(csv_path: str) -> List[Tool]:
                 or "Untitled Tool"
             ).strip()
             link = (row.get("Link") or row.get("url") or row.get("href") or "").strip()
-            description = generate_description(name)
+
+            # Optional richer fields from the updated CSV
+            desc_from_csv = (
+                row.get("Description of the Site")
+                or row.get("description")
+                or row.get("summary")
+                or ""
+            ).strip()
+            year = (row.get("Year Creation of the Site") or row.get("year") or "").strip()
+            country = (row.get("Country Who Created") or row.get("country") or "").strip()
+            context_window = (row.get("Context Window") or row.get("context") or "").strip()
+            benchmarks = (row.get("Benchmarks") or row.get("notes") or "").strip()
+            category = (row.get("Category") or "").strip() or infer_category(name)
+
+            description = desc_from_csv or generate_description(name)
             usage = generate_usage(name)
-            tools.append(Tool(name=name, link=link, description=description, usage=usage))
+
+            tools.append(
+                Tool(
+                    name=name,
+                    link=link,
+                    description=description,
+                    usage=usage,
+                    year=year,
+                    country=country,
+                    context_window=context_window,
+                    benchmarks=benchmarks,
+                    category=category,
+                )
+            )
     return tools
 
 
@@ -92,7 +135,23 @@ def load_tools(csv_path: str) -> List[Tool]:
 def index():
     csv_path = os.path.join(os.path.dirname(__file__), "table.csv")
     tools = load_tools(csv_path)
-    return render_template("index.html", tools=tools)
+    # Group by category for rendering
+    category_to_tools: Dict[str, List[Tool]] = {}
+    for t in tools:
+        category_to_tools.setdefault(t.category, []).append(t)
+    # Stable order for requested categories
+    preferred_order = ["Code Generating", "Images Generation", "Visualization Tools", "Other Tools"]
+    ordered_categories: List[Tuple[str, List[Tool]]] = []
+    seen = set()
+    for cat in preferred_order:
+        if cat in category_to_tools:
+            ordered_categories.append((cat, category_to_tools[cat]))
+            seen.add(cat)
+    for cat, items in sorted(category_to_tools.items()):
+        if cat not in seen:
+            ordered_categories.append((cat, items))
+
+    return render_template("index.html", tools=tools, categories=ordered_categories)
 
 
 if __name__ == "__main__":

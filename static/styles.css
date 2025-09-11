@@ -23,6 +23,11 @@ a:hover { text-decoration: underline; }
 .tool-link a { display: inline-block; background: var(--accent); color: #052e16; font-weight: 700; padding: .5rem .75rem; border-radius: 8px; }
 .tool-link a:hover { filter: brightness(1.05); text-decoration: none; }
 
+.category-section { margin: 2rem 0; }
+.category-title { margin: 0 0 .5rem; font-size: 1.4rem; color: #a7f3d0; border-left: 4px solid var(--accent); padding-left: .5rem; }
+.meta { list-style: none; padding: 0; margin: 0 0 .5rem; color: var(--muted); }
+.meta li { margin: .125rem 0; }
+
 .site-footer { text-align: center; color: var(--muted); padding: 2rem 1rem; border-top: 1px solid rgba(255,255,255,0.06); margin-top: 2rem; }
 
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
