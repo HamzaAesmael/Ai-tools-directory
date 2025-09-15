@@ -1,0 +1,1 @@
+A curated directory of AI tools designed for students and researchers, presented through a clean and user-friendly web interface. This project helps users discover and access various AI-powered tools for tasks such as code generation, image creation, data visualization, and more.
